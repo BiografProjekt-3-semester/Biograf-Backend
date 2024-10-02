@@ -6,7 +6,9 @@ name: Build and deploy JAR app to Azure Web App - BiografProjekt
 on:
   push:
     branches:
+      - development
       - test
+      - master
   workflow_dispatch:
 
 jobs:
