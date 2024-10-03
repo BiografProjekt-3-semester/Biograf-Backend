@@ -1,10 +1,7 @@
 package stud.kea.dk.biografbackend.reservation.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +17,15 @@ public class reservationModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     int price;
-    //int id.Customer
-    //int id.ShowTime
+   /* int id.Customer
+    int id.ShowTime
+    @ManyToOne
+    @JoinColumn(name="customer", referencedColumnName = "id")
+    Customer customer;
 
+    @ManyToOne
+    @JoinColumn(name="showtime", referencedColumnName = "id")
+    Showtime showtime;
+*/
 
 }
