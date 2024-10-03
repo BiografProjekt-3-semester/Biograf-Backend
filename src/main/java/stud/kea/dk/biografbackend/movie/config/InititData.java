@@ -9,7 +9,7 @@ public class InititData implements CommandLineRunner {
     //MovieRepository movieRepository;
     @Override
     public void run(String... args) throws Exception {
-
+/*
         MovieModel movie1 = new MovieModel(1, 13, 148, "Inception", "A mind-bending thriller", "inception.jpg");
         MovieModel movie2 = new MovieModel(2, 15, 136, "The Matrix", "A hacker discovers the real world", "matrix.jpg");
         MovieModel movie3 = new MovieModel(3, 7, 102, "Frozen", "An animated tale of two sisters", "frozen.jpg");
@@ -27,6 +27,8 @@ public class InititData implements CommandLineRunner {
         for (int i = 1; i <= 13; i++) {
                // movieRepository.save(i);
             }
+
+ */
 
     }
 }

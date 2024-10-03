@@ -15,6 +15,8 @@ public class MovieController {
 
     @Autowired
     private MovieService movieService;
+    @Autowired
+    ApiServiceGetMovie apiServiceGetMovie;
 
     @PostMapping
     public MovieModel createMovie(@RequestBody MovieModel movie) {
@@ -41,4 +43,18 @@ public class MovieController {
     public void deleteMovie(@PathVariable int id) {
         movieService.deleteMovie(id);
     }
+
+
+    // Denne metode håndterer en GET-anmodning med et filmnavn
+    @GetMapping("/search/{name}")
+    public List<MovieModel> getMovieByName(@PathVariable String name) {
+        return apiServiceGetMovie.getMoviesFromAPI(name);
+    }
+
+    @GetMapping("/page/{page}")
+    public List<MovieModel> getMoviesFromAPIByPage(Integer page) {
+        apiServiceGetMovie.getMoviesFromAPIByPage(page);
+        return null;
+    }
+
 }
