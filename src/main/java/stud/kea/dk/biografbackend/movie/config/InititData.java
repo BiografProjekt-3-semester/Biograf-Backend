@@ -1,12 +1,17 @@
 package stud.kea.dk.biografbackend.movie.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 import stud.kea.dk.biografbackend.movie.model.MovieModel;
-
+import stud.kea.dk.biografbackend.movie.repository.MovieRepository;
+@Component
 public class InititData implements CommandLineRunner {
 
-    //@Autowired
-    //MovieRepository movieRepository;
+    @Autowired
+    private MovieRepository movieRepository;
+
+
     @Override
     public void run(String... args) throws Exception {
 
@@ -24,9 +29,8 @@ public class InititData implements CommandLineRunner {
         MovieModel movie12 = new MovieModel(12, 6, 100, "Finding Nemo", "A clownfish searches for his missing son", "findingnemo.jpg");
         MovieModel movie13 = new MovieModel(13, 10, 152, "Harry Potter and the Sorcerer's Stone", "A boy discovers he is a wizard", "harrypotter.jpg");
 
-        for (int i = 1; i <= 13; i++) {
-               // movieRepository.save(i);
-            }
+        movieRepository.save(movie1);
+
 
     }
 }

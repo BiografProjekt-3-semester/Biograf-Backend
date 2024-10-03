@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import stud.kea.dk.biografbackend.movie.model.MovieModel;
+import stud.kea.dk.biografbackend.theater.model.TheaterModel;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -21,17 +23,19 @@ public class ShowtimeModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    //@ManyToOne
-    // int movieid;
-    //@JoinColumn(name = "MovieModel", referencedColumnName = "Movieid")
+    @ManyToOne
+    @JoinColumn(name = "MovieModel", referencedColumnName = "id")
+    MovieModel movie;
 
-    //@ManyToOne
-    //int theaterid;
-    //@JoinColumn(name = "TheaterModel", referencedColumnName = "theaterID")
+    @ManyToOne
+    @JoinColumn(name = "TheaterModel", referencedColumnName = "id")
+    TheaterModel theaterModel;
+
     LocalDate movieDate;
     LocalTime startTime;
     LocalTime endTime;
     double price;
-
+    int theaterid;
+    int movieid;
 
 }
