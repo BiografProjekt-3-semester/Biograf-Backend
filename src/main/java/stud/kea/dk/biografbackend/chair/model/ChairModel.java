@@ -5,25 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import stud.kea.dk.biografbackend.theater.model.TheaterModel;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Entity
 public class ChairModel {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+    private long id;
     private int chairNr;
     private int rowNr;
     private boolean isAvailable;
     private boolean isSpecial;
 
-    // @ManyToOne
-    // @JoinColumn(name = "id.theater", nullable = false)
-   // private Theater theater
+    @ManyToOne
+    @JoinColumn(name = "theater_id", nullable = false)
+    private TheaterModel theater;
 }
