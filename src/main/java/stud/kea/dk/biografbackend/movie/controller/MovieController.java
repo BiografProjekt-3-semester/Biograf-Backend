@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import stud.kea.dk.biografbackend.movie.model.MovieModel;
 import stud.kea.dk.biografbackend.movie.service.ApiServiceGetMovie;
 import stud.kea.dk.biografbackend.movie.service.ApiServiceGetMovieImpl;
+import stud.kea.dk.biografbackend.movie.service.MovieService;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 public class MovieController {
 
     @Autowired
-    private ApiServiceGetMovieImpl movieService;
+    private MovieService movieService;
 
     @PostMapping
     public MovieModel createMovie(@RequestBody MovieModel movie) {
