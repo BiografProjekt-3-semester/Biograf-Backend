@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class reservationModel {
+public class ReservationModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
@@ -20,12 +20,12 @@ public class reservationModel {
    /* int id.Customer
     int id.ShowTime
     @ManyToOne
-    @JoinColumn(name="customer", referencedColumnName = "id")
-    Customer customer;
+    @JoinColumn(name="CustomerModel", referencedColumnName = "id")
+    CustomerModel customer;
 
     @ManyToOne
-    @JoinColumn(name="showtime", referencedColumnName = "id")
-    Showtime showtime;
+    @JoinColumn(name="ShowtimeModel", referencedColumnName = "id")
+    ShowtimeModel showtime;
 */
 
 }
