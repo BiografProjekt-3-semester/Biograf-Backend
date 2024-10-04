@@ -16,7 +16,8 @@ public class ChairModel {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
+
     private int chairNr;
     private int rowNr;
     private boolean isAvailable;
