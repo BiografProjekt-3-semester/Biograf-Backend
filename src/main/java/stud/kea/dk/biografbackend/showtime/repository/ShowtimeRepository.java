@@ -5,4 +5,6 @@ import stud.kea.dk.biografbackend.showtime.model.ShowtimeModel;
 
 public interface ShowtimeRepository extends JpaRepository<ShowtimeModel, Integer> {
 
+
+
 }
