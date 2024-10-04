@@ -17,9 +17,9 @@ public class ShowtimeController {
     @Autowired
     private ShowtimeServiceImpl showtimeService;
 
-    @PostMapping
-    public ResponseEntity<ShowtimeModel> createShowtime(@RequestBody ShowtimeModel showtime){
-        ShowtimeModel createdShowtime=showtimeService.createShowtime(showtime);
+    @PostMapping(consumes = "application/json", produces = "application/json")
+    public ResponseEntity<ShowtimeModel> createShowtime(@RequestBody ShowtimeModel showtime) {
+        ShowtimeModel createdShowtime = showtimeService.createShowtime(showtime);
         return new ResponseEntity<>(createdShowtime, HttpStatus.CREATED);
     }
 

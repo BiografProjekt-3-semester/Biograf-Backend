@@ -26,11 +26,11 @@ public class ShowtimeModel {
     private LocalTime endTime;
     private double price;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Movie_id", referencedColumnName = "id")
     private MovieModel movie;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "theater_id", referencedColumnName = "id")
     private TheaterModel theaterID;
 
