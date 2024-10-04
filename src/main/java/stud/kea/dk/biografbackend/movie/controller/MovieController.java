@@ -8,7 +8,7 @@ import stud.kea.dk.biografbackend.movie.service.ApiServiceGetMovieImpl;
 import stud.kea.dk.biografbackend.movie.service.MovieService;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/movie")
 public class MovieController {
@@ -50,6 +50,7 @@ public class MovieController {
     public List<MovieModel> getMovieByName(@PathVariable String name) {
         return apiServiceGetMovie.getMoviesFromAPI(name);
     }
+
 
     @GetMapping("/page/{page}")
     public List<MovieModel> getMoviesFromAPIByPage(Integer page) {
