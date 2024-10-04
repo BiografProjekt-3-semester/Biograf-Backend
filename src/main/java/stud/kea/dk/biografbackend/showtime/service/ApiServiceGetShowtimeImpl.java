@@ -10,7 +10,7 @@ import stud.kea.dk.biografbackend.theater.model.TheaterModel;
 import stud.kea.dk.biografbackend.theater.repository.TheaterRepository;
 
 @Service
-public class ShowtimeServiceImpl implements ShowtimeService{
+public class ApiServiceGetShowtimeImpl implements ApiServiceGetShowtime {
 
     @Autowired
     ShowtimeRepository showtimeRepository;

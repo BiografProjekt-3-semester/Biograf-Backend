@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import stud.kea.dk.biografbackend.showtime.model.ShowtimeModel;
-import stud.kea.dk.biografbackend.showtime.service.ShowtimeServiceImpl;
+import stud.kea.dk.biografbackend.showtime.service.ApiServiceGetShowtimeImpl;
 
 @RestController
 @RequestMapping("/api/showtimes")
 public class ShowtimeController {
 
     @Autowired
-    private ShowtimeServiceImpl showtimeService;
+    private ApiServiceGetShowtimeImpl showtimeService;
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     public ResponseEntity<ShowtimeModel> createShowtime(@RequestBody ShowtimeModel showtime) {
