@@ -1,6 +1,7 @@
 package stud.kea.dk.biografbackend.movie.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stud.kea.dk.biografbackend.movie.model.MovieModel;
 import stud.kea.dk.biografbackend.movie.service.ApiServiceGetMovie;
@@ -20,8 +21,9 @@ public class MovieController {
     ApiServiceGetMovie apiServiceGetMovie;
 
     @PostMapping("/makeMovie")
-    public MovieModel createMovie(@RequestBody MovieModel movie) {
+    public MovieModel makeMovie(@RequestBody MovieModel movie) {
         return movieCRUD.createMovie(movie);
+
     }
 
     @GetMapping("/getAllMovies")
