@@ -1,5 +1,6 @@
 package stud.kea.dk.biografbackend.chair.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,5 +25,6 @@ public class ChairModel {
 
     @ManyToOne
     @JoinColumn(name = "theater_id", nullable = false)
+
     private TheaterModel theater;
 }

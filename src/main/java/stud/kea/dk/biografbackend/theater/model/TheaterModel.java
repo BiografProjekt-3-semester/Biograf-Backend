@@ -1,5 +1,6 @@
 package stud.kea.dk.biografbackend.theater.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
@@ -30,7 +31,7 @@ public class TheaterModel {
    String name;
 
 
-    @OneToMany(mappedBy = "theaterID", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "theaterID", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<ShowtimeModel> showtimes = new ArrayList<>();
 
@@ -39,5 +40,6 @@ public class TheaterModel {
         this.name = name;
     }
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<ChairModel> chairs = new ArrayList<>();
 }
