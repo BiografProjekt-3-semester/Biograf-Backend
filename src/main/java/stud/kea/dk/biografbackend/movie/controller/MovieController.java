@@ -23,7 +23,7 @@ public class MovieController {
         return movieService.createMovie(movie);
     }
 
-    @GetMapping
+    @GetMapping("/getAlleMovies")
     public List<MovieModel> getAllMovies() {
         return movieService.getAllMovies();
     }
@@ -56,5 +56,7 @@ public class MovieController {
         apiServiceGetMovie.getMoviesFromAPIByPage(page);
         return null;
     }
+
+
 
 }
