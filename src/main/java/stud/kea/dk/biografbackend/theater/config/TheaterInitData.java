@@ -16,13 +16,15 @@ public class TheaterInitData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        TheaterModel theater1 = new TheaterModel();
-        theater1.setName("Small Theater");
+        if (theaterRepository.findAll().isEmpty()) {
+            TheaterModel theater1 = new TheaterModel();
+            theater1.setName("Small Theater");
 
-        TheaterModel theater2 = new TheaterModel();
-        theater2.setName("Large Theater");
+            TheaterModel theater2 = new TheaterModel();
+            theater2.setName("Large Theater");
 
-        theaterRepository.save(theater1);
-        theaterRepository.save(theater2);
+            theaterRepository.save(theater1);
+            theaterRepository.save(theater2);
+        }
     }
 }
