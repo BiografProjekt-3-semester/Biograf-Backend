@@ -18,24 +18,28 @@ import java.time.LocalTime;
 @Entity
 public class ShowtimeModel {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private LocalDate movieDate;
+    private LocalTime startTime;
+    private LocalTime endTime;
+    private double price;
 
-    @ManyToOne
-    @JoinColumn(name = "MovieModel", referencedColumnName = "id")
-    MovieModel movie;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "Movie_id", referencedColumnName = "id")
+    private MovieModel movie;
 
-    @ManyToOne
-    @JoinColumn(name = "TheaterModel", referencedColumnName = "id")
-    TheaterModel theaterModel;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "theater_id", referencedColumnName = "id")
+    private TheaterModel theaterID;
 
-    LocalDate movieDate;
-    LocalTime startTime;
-    LocalTime endTime;
-    double price;
-    int theaterid;
-    int movieid;
 
+    public ShowtimeModel(int id, LocalDate movieDate, LocalTime startTime, double price, LocalTime endTime) {
+        this.id = id;
+        this.movieDate = movieDate;
+        this.startTime = startTime;
+        this.price = price;
+        this.endTime = endTime;
+    }
 }

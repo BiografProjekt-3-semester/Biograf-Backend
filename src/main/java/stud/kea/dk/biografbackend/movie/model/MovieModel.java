@@ -24,7 +24,7 @@ public class MovieModel {
     private String picture;
 
 
-    @OneToMany(mappedBy = "movie")
+    @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER)
     private List<ShowtimeModel> showTimes;
 
     public MovieModel(int id, int ageLimit, int duration, String title, String description, String picture) {
