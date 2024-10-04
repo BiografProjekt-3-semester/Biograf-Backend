@@ -9,6 +9,8 @@ import stud.kea.dk.biografbackend.showtime.repository.ShowtimeRepository;
 import stud.kea.dk.biografbackend.theater.model.TheaterModel;
 import stud.kea.dk.biografbackend.theater.repository.TheaterRepository;
 
+import java.util.List;
+
 @Service
 public class ApiServiceGetShowtimeImpl implements ApiServiceGetShowtime {
 
@@ -37,5 +39,8 @@ public class ApiServiceGetShowtimeImpl implements ApiServiceGetShowtime {
 
         // Gem showtime
         return showtimeRepository.save(showtime);
+    }
+    public List<ShowtimeModel> getShowtimesByMovieId(int movieId) {
+        return showtimeRepository.findByMovieId(movieId);
     }
 }
