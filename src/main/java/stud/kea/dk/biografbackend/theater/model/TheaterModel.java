@@ -25,11 +25,10 @@ import java.util.List;
 @Entity
 public class TheaterModel {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-   String name;
-
+    private String name;
 
     @OneToMany(mappedBy = "theaterID", cascade = CascadeType.ALL)
     @JsonBackReference

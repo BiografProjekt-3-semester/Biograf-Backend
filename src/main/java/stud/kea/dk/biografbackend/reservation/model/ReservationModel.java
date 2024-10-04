@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import stud.kea.dk.biografbackend.customer.model.CustomerModel;
+import stud.kea.dk.biografbackend.showtime.model.ShowtimeModel;
 
 @Getter
 @Setter
@@ -13,19 +15,17 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 public class ReservationModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    int price;
-   /* int id.Customer
-    int id.ShowTime
-    @ManyToOne
-    @JoinColumn(name="CustomerModel", referencedColumnName = "id")
-    CustomerModel customer;
+    private int id;
+    private int price;
 
     @ManyToOne
-    @JoinColumn(name="ShowtimeModel", referencedColumnName = "id")
-    ShowtimeModel showtime;
-*/
+    @JoinColumn(name="customer_id", referencedColumnName = "id", nullable = false)
+    private CustomerModel customer;
 
+    @ManyToOne
+    @JoinColumn(name="showtime_id", referencedColumnName = "id", nullable = false)
+    private ShowtimeModel showtime;
 }
