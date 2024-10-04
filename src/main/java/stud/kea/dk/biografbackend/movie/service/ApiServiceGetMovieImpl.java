@@ -43,6 +43,7 @@ public class ApiServiceGetMovieImpl implements ApiServiceGetMovie {
                 movie.setDescription(rootNode.get("Genre").asText());
                 movie.setDurationEkstra(rootNode.get("Runtime").asText());
                 movie.setPicture(rootNode.get("Poster").asText());
+                movieRepository.save(movie);
 
                 // Tilføj filmen til listen
                 movieList.add(movie);

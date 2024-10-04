@@ -18,7 +18,7 @@ public class MovieController {
     @Autowired
     ApiServiceGetMovie apiServiceGetMovie;
 
-    @PostMapping
+    @PostMapping("/makeMovie")
     public MovieModel createMovie(@RequestBody MovieModel movie) {
         return movieService.createMovie(movie);
     }
