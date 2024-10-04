@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import stud.kea.dk.biografbackend.movie.model.MovieModel;
 import stud.kea.dk.biografbackend.movie.service.ApiServiceGetMovie;
 import stud.kea.dk.biografbackend.movie.service.ApiServiceGetMovieImpl;
+import stud.kea.dk.biografbackend.movie.service.MovieCRUD;
 import stud.kea.dk.biografbackend.movie.service.MovieService;
 
 import java.util.List;
@@ -14,34 +15,34 @@ import java.util.List;
 public class MovieController {
 
     @Autowired
-    private MovieService movieService;
+    MovieCRUD movieCRUD;
     @Autowired
     ApiServiceGetMovie apiServiceGetMovie;
 
     @PostMapping("/makeMovie")
     public MovieModel createMovie(@RequestBody MovieModel movie) {
-        return movieService.createMovie(movie);
+        return movieCRUD.createMovie(movie);
     }
 
     @GetMapping("/getAllMovies")
     public List<MovieModel> getAllMovies() {
-        return movieService.getAllMovies();
+        return movieCRUD.getAllMovies();
     }
 
     @GetMapping("/{id}")
     public MovieModel getMovieById(@PathVariable int id) {
-        return movieService.getMovieById(id);
+        return movieCRUD.getMovieById(id);
     }
 
     @PutMapping("/{id}")
     public MovieModel updateMovie(@PathVariable int id, @RequestBody MovieModel movie) {
         movie.setId(id);
-        return movieService.updateMovie(movie);
+        return movieCRUD.updateMovie(movie);
     }
 
     @DeleteMapping("/{id}")
     public void deleteMovie(@PathVariable int id) {
-        movieService.deleteMovie(id);
+        movieCRUD.deleteMovie(id);
     }
 
 
@@ -50,6 +51,7 @@ public class MovieController {
     public List<MovieModel> getMovieByName(@PathVariable String name) {
         return apiServiceGetMovie.getMoviesFromAPI(name);
     }
+
 
 
     @GetMapping("/page/{page}")

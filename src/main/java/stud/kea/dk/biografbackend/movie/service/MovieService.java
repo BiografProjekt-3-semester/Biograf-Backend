@@ -8,7 +8,7 @@ import stud.kea.dk.biografbackend.movie.repository.MovieRepository;
 import java.util.List;
 
 @Service
-public class MovieService {
+public class MovieService implements MovieCRUD {
 
     @Autowired
     private MovieRepository movieRepository;
