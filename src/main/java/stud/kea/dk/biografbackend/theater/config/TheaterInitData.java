@@ -1,6 +1,5 @@
 package stud.kea.dk.biografbackend.theater.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -11,8 +10,11 @@ import stud.kea.dk.biografbackend.theater.model.TheaterModel;
 @Order(1)
 public class TheaterInitData implements CommandLineRunner {
 
-    @Autowired
-    TheaterRepository theaterRepository;
+    final private TheaterRepository theaterRepository;
+
+    public TheaterInitData(TheaterRepository theaterRepository) {
+        this.theaterRepository = theaterRepository;
+    }
 
     @Override
     public void run(String... args) throws Exception {
