@@ -28,7 +28,7 @@ public class ShowtimeModel {
     private LocalTime endTime;
     private double price;
 
-   // @ManyToOne(fetch = FetchType.LAZY)
+    // @ManyToOne(fetch = FetchType.LAZY)
     @ManyToOne
     @JoinColumn(name = "Movie_id", referencedColumnName = "id")
     private MovieModel movie;
