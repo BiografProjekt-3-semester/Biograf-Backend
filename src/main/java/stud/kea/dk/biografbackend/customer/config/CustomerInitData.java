@@ -5,5 +5,9 @@ import stud.kea.dk.biografbackend.customer.repository.CustomerRepository;
 
 public class CustomerInitData {
 
-    CustomerRepository customerRepository;
+    final private CustomerRepository customerRepository;
+
+    public CustomerInitData (CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 }
