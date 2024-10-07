@@ -8,6 +8,7 @@ import stud.kea.dk.biografbackend.showtime.service.ApiServiceGetShowtimeImpl;
 
 import java.util.List;
 
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/api/showTimes")
 public class ShowtimeController {

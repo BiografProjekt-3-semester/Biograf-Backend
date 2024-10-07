@@ -1,5 +1,6 @@
 package stud.kea.dk.biografbackend.showtime.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,11 +28,14 @@ public class ShowtimeModel {
     private LocalTime endTime;
     private double price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+   // @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "Movie_id", referencedColumnName = "id")
+    @JsonIgnore
     private MovieModel movie;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    //@ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "theater_id", referencedColumnName = "id")
     private TheaterModel theaterID;
 

@@ -40,6 +40,6 @@ public class ApiServiceGetShowtimeImpl implements ApiServiceGetShowtime {
         return showtimeRepository.save(showtime);
     }
     public List<ShowtimeModel> getShowTimesByMovieId(int movieId) {
-        return showtimeRepository.findByMovieId(movieId);
+        return showtimeRepository.findShowtimeByMovieId(movieId);
     }
 }
