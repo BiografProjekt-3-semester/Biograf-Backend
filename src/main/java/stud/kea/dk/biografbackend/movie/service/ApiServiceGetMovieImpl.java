@@ -2,25 +2,27 @@ package stud.kea.dk.biografbackend.movie.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import stud.kea.dk.biografbackend.movie.model.MovieModel;
 import stud.kea.dk.biografbackend.movie.repository.MovieRepository;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ApiServiceGetMovieImpl implements ApiServiceGetMovie {
-    @Autowired
-    MovieRepository movieRepository;
+
+    final private MovieRepository movieRepository;
+
+    public ApiServiceGetMovieImpl(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
+    }
+
     private final String API_KEY = "d83ad2f6";  // Din API-nøgle
     private final String BASE_URL = "http://www.omdbapi.com/?t=%s&apikey=%s";
     private final String BASE_URL_PAGE = "http://www.omdbapi.com/";
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
 
     public List<MovieModel> getMoviesFromAPI(String name) {
         List<MovieModel> movieList = new ArrayList<>();

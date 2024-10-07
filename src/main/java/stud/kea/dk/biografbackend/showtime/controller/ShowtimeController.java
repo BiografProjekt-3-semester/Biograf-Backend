@@ -1,6 +1,5 @@
 package stud.kea.dk.biografbackend.showtime.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,11 +9,15 @@ import stud.kea.dk.biografbackend.showtime.service.ApiServiceGetShowtimeImpl;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/showtimes")
+@RequestMapping("/api/showTimes")
 public class ShowtimeController {
 
-    @Autowired
-    private ApiServiceGetShowtimeImpl showtimeService;
+
+    final private ApiServiceGetShowtimeImpl showtimeService;
+
+    public ShowtimeController(ApiServiceGetShowtimeImpl apiServiceGetShowtime) {
+        this.showtimeService = apiServiceGetShowtime;
+    }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     public ResponseEntity<ShowtimeModel> createShowtime(@RequestBody ShowtimeModel showtime) {
@@ -23,9 +26,9 @@ public class ShowtimeController {
     }
     // GET-anmodning for at hente visningstider for en specifik film baseret på filmens ID
     @GetMapping("/movie/{movieId}")
-    public ResponseEntity<List<ShowtimeModel>> getShowtimesByMovieId(@PathVariable int movieId) {
-        List<ShowtimeModel> showtimes = showtimeService.getShowtimesByMovieId(movieId);
-        return new ResponseEntity<>(showtimes, HttpStatus.OK);
+    public ResponseEntity<List<ShowtimeModel>> getShowTimesByMovieId(@PathVariable int movieId) {
+        List<ShowtimeModel> showTimes = showtimeService.getShowTimesByMovieId(movieId);
+        return new ResponseEntity<>(showTimes, HttpStatus.OK);
     }
 
 

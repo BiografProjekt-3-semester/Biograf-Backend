@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 import stud.kea.dk.biografbackend.showtime.model.ShowtimeModel;
 import stud.kea.dk.biografbackend.chair.model.ChairModel;
 
@@ -32,7 +31,7 @@ public class TheaterModel {
 
     @OneToMany(mappedBy = "theaterID", cascade = CascadeType.ALL)
     @JsonBackReference
-    private List<ShowtimeModel> showtimes = new ArrayList<>();
+    private List<ShowtimeModel> showTimes = new ArrayList<>();
 
     public TheaterModel(int id, String name) {
         this.id = id;

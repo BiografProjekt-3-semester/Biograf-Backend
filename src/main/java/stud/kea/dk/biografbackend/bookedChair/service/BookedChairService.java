@@ -1,6 +1,5 @@
 package stud.kea.dk.biografbackend.bookedChair.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stud.kea.dk.biografbackend.bookedChair.model.BookedChairModel;
 import stud.kea.dk.biografbackend.bookedChair.repository.BookedChairRepository;
@@ -13,11 +12,14 @@ import java.util.Optional;
 @Service
 public class BookedChairService {
 
-    @Autowired
-    private BookedChairRepository bookedChairRepository;
 
-    @Autowired
-    private ChairRepository chairRepository;
+    final private BookedChairRepository bookedChairRepository;
+    final private ChairRepository chairRepository;
+
+    public BookedChairService(BookedChairRepository bookedChairRepository, ChairRepository chairRepository) {
+        this.bookedChairRepository = bookedChairRepository;
+        this.chairRepository = chairRepository;
+    }
 
     public List<BookedChairModel> findAll() {
         return bookedChairRepository.findAll();

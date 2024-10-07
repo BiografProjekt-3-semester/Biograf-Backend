@@ -1,13 +1,9 @@
 package stud.kea.dk.biografbackend.movie.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stud.kea.dk.biografbackend.movie.model.MovieModel;
 import stud.kea.dk.biografbackend.movie.service.ApiServiceGetMovie;
-import stud.kea.dk.biografbackend.movie.service.ApiServiceGetMovieImpl;
 import stud.kea.dk.biografbackend.movie.service.MovieCRUD;
-import stud.kea.dk.biografbackend.movie.service.MovieService;
 
 import java.util.List;
 @CrossOrigin
@@ -15,10 +11,13 @@ import java.util.List;
 @RequestMapping("/movie")
 public class MovieController {
 
-    @Autowired
-    MovieCRUD movieCRUD;
-    @Autowired
-    ApiServiceGetMovie apiServiceGetMovie;
+    final private MovieCRUD movieCRUD;
+    final private ApiServiceGetMovie apiServiceGetMovie;
+
+    public MovieController(MovieCRUD movieCRUD, ApiServiceGetMovie apiServiceGetMovie){
+        this.movieCRUD = movieCRUD;
+        this.apiServiceGetMovie = apiServiceGetMovie;
+    }
 
     @PostMapping("/makeMovie")
     public MovieModel makeMovie(@RequestBody MovieModel movie) {
