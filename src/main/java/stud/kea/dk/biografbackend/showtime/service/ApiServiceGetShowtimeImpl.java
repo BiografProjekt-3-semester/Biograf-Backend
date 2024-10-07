@@ -1,5 +1,6 @@
 package stud.kea.dk.biografbackend.showtime.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stud.kea.dk.biografbackend.movie.model.MovieModel;
 import stud.kea.dk.biografbackend.movie.repository.MovieRepository;
@@ -8,6 +9,7 @@ import stud.kea.dk.biografbackend.showtime.repository.ShowtimeRepository;
 import stud.kea.dk.biografbackend.theater.model.TheaterModel;
 import stud.kea.dk.biografbackend.theater.repository.TheaterRepository;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -15,7 +17,7 @@ import java.util.List;
 @Service
 public class ApiServiceGetShowtimeImpl implements ApiServiceGetShowtime {
 
-
+    @Autowired
     final private ShowtimeRepository showtimeRepository;
     final private MovieRepository movieRepository;
     final private TheaterRepository theaterRepository;
