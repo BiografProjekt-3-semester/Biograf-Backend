@@ -29,7 +29,7 @@ public class TheaterModel {
     private int id;
     private String name;
 
-    @OneToMany(mappedBy = "theaterID", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<ShowtimeModel> showTimes = new ArrayList<>();
 

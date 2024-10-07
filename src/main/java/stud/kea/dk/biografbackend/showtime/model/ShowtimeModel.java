@@ -37,7 +37,7 @@ public class ShowtimeModel {
     //@ManyToOne(fetch = FetchType.EAGER)
     @ManyToOne
     @JoinColumn(name = "theater_id", referencedColumnName = "id")
-    private TheaterModel theaterID;
+    private TheaterModel theater;
 
 
     public ShowtimeModel(int id, LocalDate movieDate, LocalTime startTime, double price, LocalTime endTime) {
