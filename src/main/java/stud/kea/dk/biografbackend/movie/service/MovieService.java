@@ -37,7 +37,6 @@ public class MovieService implements MovieCRUD {
             movieToUpdate.setTitle(movieModel.getTitle());
             movieToUpdate.setDescription(movieModel.getDescription());
             movieToUpdate.setDurationEkstra(movieModel.getDurationEkstra());
-            movieToUpdate.setPicture(movieModel.getPicture());
 
             return movieRepository.save(movieToUpdate);
         } else {
