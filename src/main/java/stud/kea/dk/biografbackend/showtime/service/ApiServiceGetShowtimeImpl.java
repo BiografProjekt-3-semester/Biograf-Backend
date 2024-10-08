@@ -46,7 +46,8 @@ public class ApiServiceGetShowtimeImpl implements ApiServiceGetShowtime {
     }
 
     public List<ShowtimeModel> getShowTimesByMovieId(int movieId) {
-        return showtimeRepository.findShowtimeByMovieId(movieId);
+
+        return showtimeRepository.findShowtimeByMovieIdOrderByMovieDateAscStartTimeAsc(movieId);
     }
 
     public boolean isShowtimeValid(ShowtimeModel newShowtime) {
