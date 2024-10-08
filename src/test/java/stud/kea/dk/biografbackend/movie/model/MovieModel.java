@@ -1,5 +1,5 @@
 package stud.kea.dk.biografbackend.movie.model;
-import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import stud.kea.dk.biografbackend.showtime.model.ShowtimeModel;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,7 +27,7 @@ public class MovieModel {
     private String picture;
 
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "movie")
     @JsonIgnore
     private List<ShowtimeModel> showTimes;
 
