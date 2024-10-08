@@ -18,6 +18,9 @@ public class TheaterService {
         this.theaterRepository = theaterRepository;
         this.chairRepository = chairRepository;
     }
+    public List<TheaterModel> findAllTheater() {
+        return theaterRepository.findAll();
+    }
 
     public void addChairsToTheater(int theaterId, List<ChairModel> chairs) {
         // Retrieve the theater by id

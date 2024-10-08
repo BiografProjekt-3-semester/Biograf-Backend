@@ -4,10 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stud.kea.dk.biografbackend.chair.model.ChairModel;
+import stud.kea.dk.biografbackend.theater.model.TheaterModel;
 import stud.kea.dk.biografbackend.theater.service.TheaterService;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/theaters")
 public class TheaterController {
@@ -16,6 +17,11 @@ public class TheaterController {
 
     public TheaterController(TheaterService theaterService) {
         this.theaterService = theaterService;
+    }
+
+    @GetMapping("/getTheaters")
+    public List<TheaterModel> getTheaters() {
+        return theaterService.findAllTheater();
     }
 
     @PostMapping("/{theaterId}/chairs")
