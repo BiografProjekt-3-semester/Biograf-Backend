@@ -30,7 +30,7 @@ public class ShowtimeModel {
 
     // @ManyToOne(fetch = FetchType.LAZY)
     @ManyToOne
-    @JoinColumn(name = "Movie_id", referencedColumnName = "id")
+    @JoinColumn(name = "Movie_id", referencedColumnName = "id", nullable = false)
     private MovieModel movie;
 
     //@ManyToOne(fetch = FetchType.EAGER)
