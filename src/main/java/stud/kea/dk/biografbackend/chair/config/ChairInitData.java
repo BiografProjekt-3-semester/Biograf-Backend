@@ -34,7 +34,7 @@ public class ChairInitData implements CommandLineRunner {
                 for (int row = 1; row <= 20; row++) {
                     for (int seat = 1; seat <= 12; seat++) {
                         boolean isSpecialUse = (row == 20 && seat >= 8); // Last 5 chairs in the last row
-                        ChairModel chair = new ChairModel(0, seat, row, true, isSpecialUse, theater1.get());
+                        ChairModel chair = new ChairModel(0, seat, row, isSpecialUse, theater1.get());
                         chairRepository.save(chair);
                     }
                 }
@@ -45,7 +45,7 @@ public class ChairInitData implements CommandLineRunner {
                 for (int row = 1; row <= 25; row++) {
                     for (int seat = 1; seat <= 16; seat++) {
                         boolean isSpecialUse = (row == 25 && seat >= 12); // Last 5 chairs in the last row
-                        ChairModel chair = new ChairModel(0, seat, row, true, isSpecialUse, theater2.get());
+                        ChairModel chair = new ChairModel(0, seat, row, isSpecialUse, theater2.get());
                         chairRepository.save(chair);
                     }
                 }

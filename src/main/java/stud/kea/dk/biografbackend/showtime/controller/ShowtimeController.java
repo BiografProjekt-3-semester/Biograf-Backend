@@ -54,9 +54,8 @@ public class ShowtimeController {
 
         return new ResponseEntity<>("Forældede visningstider slettet.", HttpStatus.OK);
     }
-
-
-
-
-
+    @GetMapping
+    public List<ShowtimeModel> getAllShowtimes() {
+        return showtimeService.getAllShowtimes();
+    }
 }

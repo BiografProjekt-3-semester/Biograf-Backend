@@ -14,7 +14,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Service
 public class ApiServiceGetShowtimeImpl implements ApiServiceGetShowtime {
 
@@ -44,7 +43,6 @@ public class ApiServiceGetShowtimeImpl implements ApiServiceGetShowtime {
         // Gem showtime
         return showtimeRepository.save(showtime);
     }
-
     public List<ShowtimeModel> getShowTimesByMovieId(int movieId) {
 
         return showtimeRepository.findShowtimeByMovieIdOrderByMovieDateAscStartTimeAsc(movieId);
@@ -82,4 +80,7 @@ public class ApiServiceGetShowtimeImpl implements ApiServiceGetShowtime {
         return allExpiredShowtimes;
     }
 
+    public List<ShowtimeModel> getAllShowtimes() {
+        return showtimeRepository.findAll();
+    }
 }

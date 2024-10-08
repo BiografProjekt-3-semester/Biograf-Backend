@@ -21,11 +21,9 @@ public class ChairModel {
 
     private int chairNr;
     private int rowNr;
-    private boolean isAvailable;
     private boolean isSpecial;
 
     @ManyToOne
     @JoinColumn(name = "theater_id", nullable = false)
-
     private TheaterModel theater;
 }
