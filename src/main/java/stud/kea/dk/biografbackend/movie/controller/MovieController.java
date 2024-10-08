@@ -40,7 +40,7 @@ public class MovieController {
         return movieCRUD.getMovieById(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteMovie(@PathVariable int id) {
         movieCRUD.deleteMovie(id);
     }
@@ -60,5 +60,6 @@ public class MovieController {
         apiServiceGetMovie.getMoviesFromAPIByPage(page);
         return null;
     }
+
 
 }

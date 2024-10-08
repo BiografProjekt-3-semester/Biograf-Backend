@@ -32,7 +32,6 @@ public class MovieService implements MovieCRUD {
 
     public MovieModel updateMovie(int id, MovieModel movieModel) {
         Optional<MovieModel> movie = movieRepository.findById(id);
-
         if (movie.isPresent()) {
             MovieModel movieToUpdate = movie.get();
             movieToUpdate.setTitle(movieModel.getTitle());
