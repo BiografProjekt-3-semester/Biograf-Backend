@@ -9,7 +9,8 @@ public interface MovieCRUD {
     public List<MovieModel> getAllMovies();
     public MovieModel getMovieById(int id);
 
-    public MovieModel updateMovie(MovieModel movie);
+    public MovieModel updateMovie(int id, MovieModel movie);
 
     public void deleteMovie(int id);
+
 }

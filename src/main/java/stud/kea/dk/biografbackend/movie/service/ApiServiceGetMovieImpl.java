@@ -2,6 +2,7 @@ package stud.kea.dk.biografbackend.movie.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import stud.kea.dk.biografbackend.movie.model.MovieModel;
@@ -9,6 +10,7 @@ import stud.kea.dk.biografbackend.movie.repository.MovieRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ApiServiceGetMovieImpl implements ApiServiceGetMovie {
@@ -108,5 +110,6 @@ public class ApiServiceGetMovieImpl implements ApiServiceGetMovie {
             e.printStackTrace();
         }
     }
+
 
 }
