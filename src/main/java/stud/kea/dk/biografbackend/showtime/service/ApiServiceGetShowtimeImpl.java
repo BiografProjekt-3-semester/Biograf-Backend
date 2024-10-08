@@ -11,6 +11,7 @@ import stud.kea.dk.biografbackend.theater.repository.TheaterRepository;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -60,6 +61,24 @@ public class ApiServiceGetShowtimeImpl implements ApiServiceGetShowtime {
         }
         return true;
 
+    }
+
+    @Override
+    public List<ShowtimeModel> deleteExpiredShowtimes() {
+        LocalDate today = LocalDate.now();
+        LocalTime now = LocalTime.now();
+
+        List<ShowtimeModel> expiredShowtimes = showtimeRepository.findByMovieDateBefore(today);
+
+        List<ShowtimeModel> todayExpiredShowtimes =showtimeRepository.findByMovieDateAndStartTimeBefore(today,now);
+
+        List<ShowtimeModel> allExpiredShowtimes= new ArrayList<>(expiredShowtimes);
+        allExpiredShowtimes.addAll(todayExpiredShowtimes);
+
+        if(!expiredShowtimes.isEmpty()){
+            showtimeRepository.deleteAll(allExpiredShowtimes);
+        }
+        return allExpiredShowtimes;
     }
 
 }

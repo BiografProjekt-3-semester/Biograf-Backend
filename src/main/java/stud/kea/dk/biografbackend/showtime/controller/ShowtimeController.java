@@ -43,6 +43,18 @@ public class ShowtimeController {
         return new ResponseEntity<>(showTimes, HttpStatus.OK);
     }
 
+    @DeleteMapping("/deleteExpired")
+    public ResponseEntity<?> deleteExpiredShowtimes() {
+        List<ShowtimeModel> deletedShowtimes = showtimeService.deleteExpiredShowtimes();
+
+        if (deletedShowtimes.isEmpty()) {
+            return new ResponseEntity<>("Ingen forældede visningstider fundet.", HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>("Forældede visningstider slettet.", HttpStatus.OK);
+    }
+
+
 
 
 

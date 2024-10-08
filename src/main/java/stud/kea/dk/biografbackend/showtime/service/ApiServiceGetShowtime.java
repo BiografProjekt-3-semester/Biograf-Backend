@@ -10,5 +10,6 @@ import java.util.List;
 @Service
 public interface ApiServiceGetShowtime {
     public ShowtimeModel createShowtime(ShowtimeModel showtime);
+    List<ShowtimeModel> deleteExpiredShowtimes();
 
 }
