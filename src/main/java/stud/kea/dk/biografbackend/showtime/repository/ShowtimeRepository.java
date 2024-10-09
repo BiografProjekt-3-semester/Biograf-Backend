@@ -19,4 +19,7 @@ public interface ShowtimeRepository extends JpaRepository<ShowtimeModel, Integer
 
     List<ShowtimeModel> findByMovieDateAndStartTimeBefore(LocalDate date, LocalTime time);
 
+    List<ShowtimeModel> findByMovieIdAndMovieDate(int movieId, LocalDate movieDate);
+
+
 }
