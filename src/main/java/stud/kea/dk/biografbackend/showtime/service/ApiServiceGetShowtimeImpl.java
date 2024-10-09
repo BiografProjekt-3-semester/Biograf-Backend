@@ -83,4 +83,11 @@ public class ApiServiceGetShowtimeImpl implements ApiServiceGetShowtime {
     public List<ShowtimeModel> getAllShowtimes() {
         return showtimeRepository.findAll();
     }
+    public ShowtimeModel getShowtimeById(Integer id) {
+        return showtimeRepository.findById(id).orElse(null);
+    }
+
+    public ShowtimeModel saveShowtime(ShowtimeModel showtime) {
+        return showtimeRepository.save(showtime);
+    }
 }

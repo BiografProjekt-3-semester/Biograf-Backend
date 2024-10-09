@@ -50,4 +50,28 @@ public class ShowtimeController {
     public List<ShowtimeModel> getAllShowtimes() {
         return showtimeService.getAllShowtimes();
     }
+
+    // En Patch Mapping til at opdatere en eksisterende showtime
+    @PatchMapping("/{id}")
+    public ResponseEntity<ShowtimeModel> updateShowtime(@PathVariable Integer id, @RequestBody ShowtimeModel updatedShowtime) {
+        try {
+            ShowtimeModel existingShowtime = showtimeService.getShowtimeById(id);
+            if (existingShowtime == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+
+            // Opdatere de relevante fields
+            existingShowtime.setMovieDate(updatedShowtime.getMovieDate());
+            existingShowtime.setStartTime(updatedShowtime.getStartTime());
+            existingShowtime.setEndTime(updatedShowtime.getEndTime());
+            existingShowtime.setPrice(updatedShowtime.getPrice());
+
+            // Gemmer den opdaterede showtime i databasen
+            showtimeService.saveShowtime(existingShowtime);
+
+            return new ResponseEntity<>(existingShowtime, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
