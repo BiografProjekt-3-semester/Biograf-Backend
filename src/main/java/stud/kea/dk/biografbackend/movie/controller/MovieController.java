@@ -40,9 +40,7 @@ public class MovieController {
         return movieCRUD.getMovieById(id);
     }
 
-
-
-    @PutMapping("/update/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<MovieModel> updateMovie(@PathVariable int id, @RequestBody MovieModel movie) {
         MovieModel updatedMovie = movieCRUD.updateMovie(id, movie);
         return ResponseEntity.ok(updatedMovie);

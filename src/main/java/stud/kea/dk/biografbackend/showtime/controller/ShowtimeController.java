@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stud.kea.dk.biografbackend.showtime.model.ShowtimeModel;
+import stud.kea.dk.biografbackend.showtime.repository.ShowtimeRepository;
 import stud.kea.dk.biografbackend.showtime.service.ApiServiceGetShowtimeImpl;
 
 import java.util.List;
@@ -13,7 +14,12 @@ import java.util.List;
 @RequestMapping("/api/showTimes")
 public class ShowtimeController {
 
+
+
+
     final private ApiServiceGetShowtimeImpl showtimeService;
+    private ShowtimeRepository showtimeRepository;
+
 
     public ShowtimeController(ApiServiceGetShowtimeImpl apiServiceGetShowtime) {
         this.showtimeService = apiServiceGetShowtime;
@@ -31,16 +37,17 @@ public class ShowtimeController {
     // GET-anmodning for at hente visningstider for en specifik film baseret på filmens ID
     @GetMapping("/movie/{movieId}")
     public ResponseEntity<List<ShowtimeModel>> getShowTimesByMovieId(@PathVariable int movieId) {
-        deleteExpiredShowTimes();
+        deleteExpiredShowtimes();
         List<ShowtimeModel> showTimes = showtimeService.getShowTimesByMovieId(movieId);
+        deleteExpiredShowtimes();
         return new ResponseEntity<>(showTimes, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteExpired")
-    public ResponseEntity<?> deleteExpiredShowTimes() {
-        List<ShowtimeModel> deletedShowTimes = showtimeService.deleteExpiredShowtimes();
+    public ResponseEntity<?> deleteExpiredShowtimes() {
+        List<ShowtimeModel> deletedShowtimes = showtimeService.deleteExpiredShowtimes();
 
-        if (deletedShowTimes.isEmpty()) {
+        if (deletedShowtimes.isEmpty()) {
             return new ResponseEntity<>("Ingen forældede visningstider fundet.", HttpStatus.NOT_FOUND);
         }
 
