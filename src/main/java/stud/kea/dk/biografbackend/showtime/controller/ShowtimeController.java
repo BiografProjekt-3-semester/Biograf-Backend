@@ -16,7 +16,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/showTimes")
 public class ShowtimeController {
-    
+
     final private ApiServiceGetShowtimeImpl showtimeService;
     private ShowtimeRepository showtimeRepository;
 
