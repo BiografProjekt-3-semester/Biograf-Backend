@@ -11,6 +11,8 @@ public interface MovieCRUD {
 
     public MovieModel updateMovie(int id, MovieModel movie);
 
-    public void deleteMovie(int id);
+    public String checkForShowtimesBeforeDelete(int movieid);
+
+    public String deleteMovieConfirmed(int movieid);
 
 }

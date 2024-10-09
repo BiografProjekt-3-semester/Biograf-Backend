@@ -1,5 +1,6 @@
 package stud.kea.dk.biografbackend.movie.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stud.kea.dk.biografbackend.movie.model.MovieModel;
@@ -8,7 +9,6 @@ import stud.kea.dk.biografbackend.movie.service.ApiServiceGetMovie;
 import stud.kea.dk.biografbackend.movie.service.MovieCRUD;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -40,10 +40,8 @@ public class MovieController {
         return movieCRUD.getMovieById(id);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteMovie(@PathVariable int id) {
-        movieCRUD.deleteMovie(id);
-    }
+
+
     @PutMapping("/update/{id}")
     public ResponseEntity<MovieModel> updateMovie(@PathVariable int id, @RequestBody MovieModel movie) {
         MovieModel updatedMovie = movieCRUD.updateMovie(id, movie);
@@ -60,6 +58,20 @@ public class MovieController {
         apiServiceGetMovie.getMoviesFromAPIByPage(page);
         return null;
     }
+    @DeleteMapping("/{id}/delete")
+    public ResponseEntity<String> deleteMovieConfirmed(@PathVariable int id) {
+        String result = movieCRUD.deleteMovieConfirmed(id);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+    @GetMapping("/{id}/check-before-delete")
+    public ResponseEntity<String> checkForShowtimes(@PathVariable int id) {
+        String result = movieCRUD.checkForShowtimesBeforeDelete(id);
 
+        if (result.contains("visningstider")) {
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 
 }

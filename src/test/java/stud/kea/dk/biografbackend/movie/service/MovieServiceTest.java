@@ -29,7 +29,7 @@ class MovieServiceTest {
         int movieId = 10;
 
         // Act
-        movieService.deleteMovie(movieId);
+        movieService.deleteMovieConfirmed(movieId);
 
         // Assert
         verify(movieRepository, times(1)).deleteById(movieId);
