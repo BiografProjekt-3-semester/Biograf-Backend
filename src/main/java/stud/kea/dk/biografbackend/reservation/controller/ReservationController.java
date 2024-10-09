@@ -28,7 +28,6 @@ public class ReservationController {
     public ResponseEntity<ReservationModel> createReservation(@RequestBody ReservationModel reservationModel) {
         try {
             ReservationModel createdReservation = reservationService.createReservation(
-                    reservationModel.getCustomer().getId(),
                     reservationModel.getShowtime().getId(),
                     reservationModel.getPrice()
             );

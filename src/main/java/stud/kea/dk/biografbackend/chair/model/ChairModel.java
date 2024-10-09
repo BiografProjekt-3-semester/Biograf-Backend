@@ -18,7 +18,6 @@ public class ChairModel {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private int chairNr;
     private int rowNr;
     private boolean isSpecial;
