@@ -50,4 +50,14 @@ public class ShowtimeController {
     public List<ShowtimeModel> getAllShowtimes() {
         return showtimeService.getAllShowtimes();
     }
+
+    @GetMapping("/{showtimeId}")
+    public ResponseEntity<ShowtimeModel> getShowtimeById(@PathVariable int showtimeId) {
+        ShowtimeModel showtime = showtimeService.getShowtimeById(showtimeId);
+        if (showtime != null) {
+            return new ResponseEntity<>(showtime, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

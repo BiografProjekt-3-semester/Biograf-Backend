@@ -11,7 +11,7 @@ import stud.kea.dk.biografbackend.chair.service.ChairService;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/chairs")
 public class ChairController {

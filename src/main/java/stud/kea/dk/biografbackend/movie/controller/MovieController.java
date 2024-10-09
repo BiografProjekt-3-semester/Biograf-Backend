@@ -10,7 +10,7 @@ import stud.kea.dk.biografbackend.movie.service.MovieCRUD;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/movie")
 public class MovieController {

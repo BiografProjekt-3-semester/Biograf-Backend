@@ -7,7 +7,7 @@ import stud.kea.dk.biografbackend.bookedChair.service.BookedChairService;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/api/bookedchair")
 public class BookedChairController {
