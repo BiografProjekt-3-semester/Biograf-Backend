@@ -50,7 +50,8 @@ public class ShowTimeInitData implements CommandLineRunner {
                     for (int j = 0; j < 3; j++) {
                         // Vælger tilfældig sal
                         TheaterModel randomTheater = theaters.get(random.nextInt(theaters.size()));
-                        LocalTime randomStartTime = LocalTime.of(random.nextInt(10) + 10, random.nextInt(60));  // Random time between 10:00 and 20:59
+                        // Vælger tilfældig tid mellem 10:00 og 20:59
+                        LocalTime randomStartTime = LocalTime.of(random.nextInt(10) + 10, random.nextInt(60));
                         LocalTime endTime = randomStartTime.plusMinutes(duration);
 
                         ShowtimeModel showtime = new ShowtimeModel();
