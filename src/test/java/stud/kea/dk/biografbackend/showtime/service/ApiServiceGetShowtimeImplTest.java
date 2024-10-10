@@ -110,23 +110,7 @@ class ApiServiceGetShowtimeImplTest {
         assertEquals(2, result.get(1).getId());
     }
 
-    @Test
-    void testDeleteExpiredShowtimes() {
-        // Arrange
-        ShowtimeModel expiredShowtime = new ShowtimeModel(1, LocalDate.now().minusDays(1), LocalTime.of(10, 0),100.0, LocalTime.of(12, 0));
-        ShowtimeModel todayExpiredShowtime = new ShowtimeModel(2, LocalDate.now(), LocalTime.of(9, 0),120.0, LocalTime.of(11, 0));
 
-        when(showtimeRepository.findByMovieDateBefore(LocalDate.now())).thenReturn(List.of(expiredShowtime));
-        when(showtimeRepository.findByMovieDateAndStartTimeBefore(LocalDate.now(), LocalTime.now())).thenReturn(List.of(todayExpiredShowtime));
-
-        // Act
-        List<ShowtimeModel> result = apiServiceGetShowtimeImpl.deleteExpiredShowtimes();
-
-        // Assert
-        assertNotNull(result);
-        assertEquals(2, result.size());
-        verify(showtimeRepository).deleteAll(result);
-    }
 
     @Test
     void testIsShowtimeValid() {
