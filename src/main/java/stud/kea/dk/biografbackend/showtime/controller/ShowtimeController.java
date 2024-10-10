@@ -21,8 +21,9 @@ public class ShowtimeController {
     private ShowtimeRepository showtimeRepository;
 
 
-    public ShowtimeController(ApiServiceGetShowtimeImpl apiServiceGetShowtime) {
+    public ShowtimeController(ApiServiceGetShowtimeImpl apiServiceGetShowtime, ShowtimeRepository showtimeRepository) {
         this.showtimeService = apiServiceGetShowtime;
+        this.showtimeRepository = showtimeRepository;
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
@@ -84,8 +85,7 @@ public class ShowtimeController {
         return new ResponseEntity<>(showTimes, HttpStatus.OK);
     }
 
-}
- // PATCH Mapping to update an existing showtime
+    // Patch Mapping til at opdatere showtimes
     @PatchMapping("/{id}")
     public ResponseEntity<ShowtimeModel> updateShowtime(@PathVariable Integer id, @RequestBody ShowtimeModel updatedShowtime) {
         try {
@@ -94,13 +94,13 @@ public class ShowtimeController {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
 
-            // Update the relevant fields
+            // Opdatere de relevante fields
             existingShowtime.setMovieDate(updatedShowtime.getMovieDate());
             existingShowtime.setStartTime(updatedShowtime.getStartTime());
             existingShowtime.setEndTime(updatedShowtime.getEndTime());
             existingShowtime.setPrice(updatedShowtime.getPrice());
 
-            // Save the updated showtime back to the database
+            // Gemmer den opdaterede showtime i databasen
             showtimeService.saveShowtime(existingShowtime);
 
             return new ResponseEntity<>(existingShowtime, HttpStatus.OK);
