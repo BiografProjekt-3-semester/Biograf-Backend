@@ -85,3 +85,27 @@ public class ShowtimeController {
     }
 
 }
+ // PATCH Mapping to update an existing showtime
+    @PatchMapping("/{id}")
+    public ResponseEntity<ShowtimeModel> updateShowtime(@PathVariable Integer id, @RequestBody ShowtimeModel updatedShowtime) {
+        try {
+            ShowtimeModel existingShowtime = showtimeService.getShowtimeById(id);
+            if (existingShowtime == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+
+            // Update the relevant fields
+            existingShowtime.setMovieDate(updatedShowtime.getMovieDate());
+            existingShowtime.setStartTime(updatedShowtime.getStartTime());
+            existingShowtime.setEndTime(updatedShowtime.getEndTime());
+            existingShowtime.setPrice(updatedShowtime.getPrice());
+
+            // Save the updated showtime back to the database
+            showtimeService.saveShowtime(existingShowtime);
+
+            return new ResponseEntity<>(existingShowtime, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+}
