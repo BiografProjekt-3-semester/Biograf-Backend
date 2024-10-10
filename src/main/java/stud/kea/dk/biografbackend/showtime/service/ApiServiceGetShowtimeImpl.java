@@ -91,5 +91,11 @@ public class ApiServiceGetShowtimeImpl implements ApiServiceGetShowtime {
         return showtimeRepository.findByMovieIdAndMovieDate(movieId, date);
     }
 
+    public ShowtimeModel getShowtimeById(Integer id) {
+        return showtimeRepository.findById(id).orElse(null);
+    }
 
+    public ShowtimeModel saveShowtime(ShowtimeModel showtime) {
+        return showtimeRepository.save(showtime);
+    }
 }
