@@ -10,7 +10,7 @@ import stud.kea.dk.biografbackend.movie.service.MovieCRUD;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/movie")
 public class MovieController {
@@ -40,8 +40,7 @@ public class MovieController {
         return movieCRUD.getMovieById(id);
     }
 
-
-    @PutMapping("/update/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<MovieModel> updateMovie(@PathVariable int id, @RequestBody MovieModel movie) {
         MovieModel updatedMovie = movieCRUD.updateMovie(id, movie);
         return ResponseEntity.ok(updatedMovie);
@@ -60,18 +59,17 @@ public class MovieController {
     @DeleteMapping("/{id}/delete")
     public ResponseEntity<String> deleteMovieConfirmed(@PathVariable int id) {
         String result = movieCRUD.deleteMovieConfirmed(id);
-        return new ResponseEntity<>(result, HttpStatus.OK);  // Slet filmen efter bekræftelse
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
-
     @GetMapping("/{id}/check-before-delete")
     public ResponseEntity<String> checkForShowtimes(@PathVariable int id) {
         String result = movieCRUD.checkForShowtimesBeforeDelete(id);
 
         if (result.contains("visningstider")) {
-            return new ResponseEntity<>(result, HttpStatus.OK);  // Returner advarsel, men tillad handling
+            return new ResponseEntity<>(result, HttpStatus.OK);
         }
 
-        return new ResponseEntity<>(result, HttpStatus.OK);  // Ingen advarsel, filmen kan slettes
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 }
