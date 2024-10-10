@@ -30,7 +30,7 @@ public class MovieModel {
     @Column(updatable = false)  // createdAt kan ikke opdateres, når først det er sat
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
     private List<ShowtimeModel> showTimes;
 
