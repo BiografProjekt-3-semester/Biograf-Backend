@@ -35,7 +35,7 @@ public class ShowtimeController {
         ShowtimeModel createdShowtime = showtimeService.createShowtime(showtime);
         return new ResponseEntity<>(createdShowtime, HttpStatus.CREATED);
     }
-    // GET-anmodning for at hente visningstider for en specifik film baseret på filmens ID
+    
     @GetMapping("/movie/{movieId}")
     public ResponseEntity<List<ShowtimeModel>> getShowTimesByMovieId(@PathVariable int movieId) {
         deleteExpiredShowtimes();

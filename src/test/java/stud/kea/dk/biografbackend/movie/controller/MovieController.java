@@ -46,10 +46,14 @@ public class MovieController {
         return ResponseEntity.ok(updatedMovie);
     }
 
+
+    // Denne metode håndterer en GET-anmodning med et filmnavn
     @GetMapping("/search/{name}")
     public List<MovieModel> getMovieByName(@PathVariable String name) {
         return apiServiceGetMovie.getMoviesFromAPI(name);
     }
+
+
 
     @GetMapping("/page/{page}")
     public List<MovieModel> getMoviesFromAPIByPage(Integer page) {
