@@ -1,4 +1,5 @@
 package stud.kea.dk.biografbackend.movie.model;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -26,6 +27,8 @@ public class MovieModel {
     private String description;
     private String picture;
 
+    @Column(updatable = false)  // createdAt kan ikke opdateres, når først det er sat
+    private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonBackReference
@@ -38,5 +41,10 @@ public class MovieModel {
         this.title = title;
         this.description = description;
         this.picture = picture;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();  // Sæt oprettelsestidspunktet automatisk, når filmen oprettes
     }
 }
