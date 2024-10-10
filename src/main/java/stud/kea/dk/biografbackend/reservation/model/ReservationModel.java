@@ -20,10 +20,12 @@ public class ReservationModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int price;
-
+/*
     @ManyToOne
     @JoinColumn(name="customer_id", referencedColumnName = "id", nullable = false)
     private CustomerModel customer;
+
+ */
 
     @ManyToOne
     @JoinColumn(name="showtime_id", referencedColumnName = "id", nullable = false)

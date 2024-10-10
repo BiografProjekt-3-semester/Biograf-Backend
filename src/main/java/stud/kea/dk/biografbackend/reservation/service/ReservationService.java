@@ -33,18 +33,23 @@ public class ReservationService {
         return reservationRepository.findById(id);
     }
 
-    public ReservationModel createReservation(int customerId, int showtimeId, int price) {
-        CustomerModel customer = customerRepository.findById(customerId)
-                .orElseThrow(() -> new NoSuchElementException("Customer not found"));
+    public ReservationModel createReservation(int showtimeId, int price) {
+       // CustomerModel customer = customerRepository.findById(customerId)
+         //       .orElseThrow(() -> new NoSuchElementException("Customer not found"));
         ShowtimeModel showtime = showtimeRepository.findById(showtimeId)
                 .orElseThrow(() -> new NoSuchElementException("Showtime not found"));
 
         ReservationModel reservation = new ReservationModel();
-        reservation.setCustomer(customer);
+        //reservation.setCustomer(customer);
         reservation.setShowtime(showtime);
         reservation.setPrice(price);
 
         return reservationRepository.save(reservation);
+    }
+
+    public ReservationModel createReservation(ReservationModel reservationDTO) {
+        // Gem reservationen i databasen
+        return reservationRepository.save(reservationDTO);
     }
 
     public Optional<ReservationModel> updateReservation(int id, ReservationModel updatedReservation) {
@@ -53,7 +58,7 @@ public class ReservationService {
         if (reservationOptional.isPresent()) {
             ReservationModel existingReservation = reservationOptional.get();
             existingReservation.setPrice(updatedReservation.getPrice());
-            existingReservation.setCustomer(updatedReservation.getCustomer());
+            //existingReservation.setCustomer(updatedReservation.getCustomer());
             existingReservation.setShowtime(updatedReservation.getShowtime());
 
             return Optional.of(reservationRepository.save(existingReservation));

@@ -56,7 +56,7 @@ public class ReservationInitData implements CommandLineRunner {
             // Opret en ny reservation
             ReservationModel reservation = new ReservationModel();
             reservation.setPrice(100); // sæt prisen for reservationen
-            reservation.setCustomer(customer); // Sæt kunden i reservationen
+            //reservation.setCustomer(customer); // Sæt kunden i reservationen
             reservation.setShowtime(showtime); // Sæt showtime i reservationen
 
             // Gem reservationen

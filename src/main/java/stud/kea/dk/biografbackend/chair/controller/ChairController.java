@@ -34,4 +34,6 @@ public class ChairController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Sæde ikke fundet");
     }
 
+
+
 }
