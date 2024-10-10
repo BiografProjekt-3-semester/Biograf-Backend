@@ -1,6 +1,7 @@
 package stud.kea.dk.biografbackend.movie.service;
 
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import stud.kea.dk.biografbackend.movie.model.MovieModel;
 import stud.kea.dk.biografbackend.movie.repository.MovieRepository;
@@ -27,7 +28,7 @@ public class MovieService implements MovieCRUD {
     }
 
     public List<MovieModel> getAllMovies() {
-        return movieRepository.findAll();
+        return movieRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
     }
 
     public MovieModel getMovieById(int id) {
