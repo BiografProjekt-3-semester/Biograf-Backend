@@ -39,21 +39,10 @@ public class ShowtimeController {
     }
     // GET-anmodning for at hente visningstider for en specifik film baseret på filmens ID
     @GetMapping("/movie/{movieId}")
-    public ResponseEntity<List<ShowtimeModel>> getShowTimesByMovieId(
-            @PathVariable int movieId,
-            @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Optional<LocalDate> date) {
-
-        // Delete expired showtimes before fetching
+    public ResponseEntity<List<ShowtimeModel>> getShowTimesByMovieId(@PathVariable int movieId) {
         deleteExpiredShowtimes();
-
-        // Fetch showtimes, optionally filtering by the provided date
-        List<ShowtimeModel> showTimes;
-        if (date.isPresent()) {
-            showTimes = showtimeService.getShowTimesByMovieIdAndDate(movieId, date.get());
-        } else {
-            showTimes = showtimeService.getShowTimesByMovieId(movieId);
-        }
-
+        List<ShowtimeModel> showTimes = showtimeService.getShowTimesByMovieId(movieId);
+        deleteExpiredShowtimes();
         return new ResponseEntity<>(showTimes, HttpStatus.OK);
     }
 
@@ -81,4 +70,21 @@ public class ShowtimeController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/movies/{movieId}")
+    public ResponseEntity<List<ShowtimeModel>> getShowTimesByMovieIdToShowtime(
+            @PathVariable int movieId,
+            @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Optional<LocalDate> date) {
+
+        deleteExpiredShowtimes();  // Ensure expired showtimes are deleted before fetching
+
+        List<ShowtimeModel> showTimes;
+        if (date.isPresent()) {
+            showTimes = showtimeService.getShowTimesByMovieIdAndDate(movieId, date.get());
+        } else {
+            showTimes = showtimeService.getShowTimesByMovieId(movieId);
+        }
+
+        return new ResponseEntity<>(showTimes, HttpStatus.OK);
+    }
+
 }
