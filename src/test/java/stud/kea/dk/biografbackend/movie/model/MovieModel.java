@@ -1,6 +1,6 @@
 package stud.kea.dk.biografbackend.movie.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,8 +27,8 @@ public class MovieModel {
     private String picture;
 
 
-    @OneToMany(mappedBy = "movie")
-    @JsonIgnore
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JsonBackReference
     private List<ShowtimeModel> showTimes;
 
     public MovieModel(int id, int ageLimit, int duration, String title, String description, String picture) {

@@ -35,6 +35,19 @@ public class MovieService implements MovieCRUD {
     }
 
     public MovieModel updateMovie(int id, MovieModel movieModel) {
+        if (movieModel == null) {
+            throw new IllegalArgumentException("Movie data cannot be null");
+        }
+        if (movieModel.getTitle() == null || movieModel.getTitle().trim().isEmpty()) {
+            throw new IllegalArgumentException("Movie title cannot be empty");
+        }
+        if (id <= 0) {
+            throw new IllegalArgumentException("Invalid movie ID");
+        }
+        if (movieModel.getTitle().length() > 255) {
+            throw new IllegalArgumentException("Movie title cannot exceed 255 characters");
+        }
+
         Optional<MovieModel> movie = movieRepository.findById(id);
         if (movie.isPresent()) {
             MovieModel movieToUpdate = movie.get();
